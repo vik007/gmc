@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'gmc/version'
+require "gmc/version"
 require "gmc/client"
 require "gmc/configuration"
 
@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   #   `git ls-files -z`.split("\x0").reject { |f| f.match(%r{\A(?:test|spec|features)/}) }
   # end
 
-  spec.files         = [
+  spec.files = [
     "lib/gmc.rb",
     "lib/gmc/version.rb",
     "lib/gmc/client.rb",

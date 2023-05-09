@@ -1,12 +1,8 @@
+# frozen_string_literal: true
+
 module Gmc
   class Configuration
-    attr_accessor :merchant_id
-    attr_accessor :currency
-    attr_accessor :access_token
-    attr_accessor :api_key
-    attr_accessor :language
-    attr_accessor :country
-    attr_accessor :base_url
+    attr_accessor :merchant_id, :currency, :access_token, :api_key, :language, :country, :base_url
 
     def self.setup
       new.tap do |instance|
@@ -24,9 +20,9 @@ module Gmc
 
     def initialize
       @base_url = "https://shoppingcontent.googleapis.com/content/v2.1"
-      @country = 'AU'
-      @currency = 'AUD'
-      @language = 'en'
+      @country = "AU"
+      @currency = "AUD"
+      @language = "en"
     end
   end
 end

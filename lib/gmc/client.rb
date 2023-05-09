@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Gmc
   class Client
     def initialize(config_arg = {})
@@ -15,14 +17,14 @@ module Gmc
       body[:targetCountry] = args[:target_country] || @config.country
       body[:brand] = args[:brand]
       body[:feedLabel] = args[:feed_label] || @config.country
-      body[:channel] = args[:channel] || 'online'
-      body[:availability] = args[:availability] || 'in stock'
-      body[:condition] = args[:condition] || 'new'
+      body[:channel] = args[:channel] || "online"
+      body[:availability] = args[:availability] || "in stock"
+      body[:condition] = args[:condition] || "new"
       body[:price] = {}
       body[:price][:currency] = args[:currency] || @config.currency
       body[:price][:value] = args[:price]
 
-      call('/products', body, 'POST')
+      call("/products", body, "POST")
     end
 
     def update(**args)
@@ -31,17 +33,17 @@ module Gmc
       body[:description] = args[:description]
       body[:link] = args[:link]
       body[:imageLink] = args[:image_link]
-      body[:availability] = args[:availability] || 'in stock'
-      body[:condition] = args[:condition] || 'new'
+      body[:availability] = args[:availability] || "in stock"
+      body[:condition] = args[:condition] || "new"
       body[:price] = {}
       body[:price][:currency] = args[:currency] || @config.currency
       body[:price][:value] = args[:price]
 
-      call("/products/#{args[:id]}", body, 'PATCH')
+      call("/products/#{args[:id]}", body, "PATCH")
     end
 
     def destroy(id)
-      call("/products/#{id}", 'DELETE')
+      call("/products/#{id}", "DELETE")
     end
 
     def product(id)
@@ -54,27 +56,27 @@ module Gmc
 
     private
 
-    def call(endpoint, body, method_name = 'GET')
+    def call(endpoint, body, method_name = "GET")
       url = URI("#{@config.base_url}/#{@config.merchant_id}#{endpoint}?key=#{@config.api_key}")
       https = Net::HTTP.new(url.host, url.port)
       https.use_ssl = true
 
       case method_name
-      when 'POST'
+      when "POST"
         request = Net::HTTP::Post.new(url)
         request.body = JSON.dump(body)
-      when 'PATCH'
+      when "PATCH"
         request = Net::HTTP::Patch.new(url)
         request.body = JSON.dump(body)
-      when 'DELETE'
+      when "DELETE"
         request = Net::HTTP::Delete.new(url)
       else
         request = Net::HTTP::Get.new(url)
       end
 
-      request['Authorization'] = "Bearer #{@config.access_token}"
-      request['Accept'] = 'application/json'
-      request['Content-Type'] = 'application/json'
+      request["Authorization"] = "Bearer #{@config.access_token}"
+      request["Accept"] = "application/json"
+      request["Content-Type"] = "application/json"
       response_formate(https.request(request))
     end
 
