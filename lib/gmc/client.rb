@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Gmc
+  # API endpoints of GMC
   class Client
     def initialize(config_arg = {})
       @config = Gmc.config.reverse_duplicate_merge(config_arg)

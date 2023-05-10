@@ -12,6 +12,7 @@ require_relative "gmc/version"
 require "gmc/client"
 require "gmc/configuration"
 
+# Google Merchant Center
 module Gmc
   class Error < StandardError; end
   @config = Gmc::Configuration.setup

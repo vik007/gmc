@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Gmc
+  # Google Merchant Configuration
   class Configuration
     attr_accessor :merchant_id, :currency, :access_token, :api_key, :language, :country, :base_url
 
