@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.description   = "APIs to upload product details on the merchant center."
   spec.homepage      = "https://throughouttechnologies.com/contact_us"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.5")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.4")
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 

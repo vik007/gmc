@@ -30,5 +30,9 @@ module Gmc
     def_delegators :@config, :access_token, :access_token=
     def_delegators :@config, :api_key, :api_key=
     def_delegators :@config, :base_url, :base_url=
+
+    def setup
+      yield self
+    end
   end
 end
