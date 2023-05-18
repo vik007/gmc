@@ -22,7 +22,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    config = Gmc.config
+    config.merchant_id = "<Merchant ID>"
+    config.access_token = "<Access Token>"
+    config.api_key = "<API Key>"
+
+    Gmc::Client.new.products
+
+
+
 
 ## Development
 
